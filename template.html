@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Templates</title>
+</head>
+
+<body>
+
+<template id="something">
+    <div>
+        <P>Hello, world!</P>
+    </div>
+</template>
+
+<script>
+  //*
+  var tmpl = document.querySelector('#something');
+
+  document.body.appendChild(
+    document.importNode(tmpl.content, true)
+  );
+  // */
+</script>
+</body>
+</html>
+
+
+

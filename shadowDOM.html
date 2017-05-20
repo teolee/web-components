@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shadow DOM</title>
+    <style>
+        p { color: red; }
+
+        /*#good-host::shadow p { color: green; }*/
+    </style>
+</head>
+
+<body>
+
+<template id="something">
+    <style>
+        :host p { color: blue; }
+    </style>
+    <div>
+        <p>Shadow DOM</p>
+    </div>
+</template>
+
+<div id="good-host"></div>
+<p>Application DOM</p>
+
+<script>
+  //*
+  // Grab an element
+  var elem = document.querySelector("#good-host");
+  // Create the shadow root
+  var root = elem.createShadowRoot();
+
+  // Grab the template
+  var tmpl = document.querySelector('#something');
+  // Add the cloned document fragment to the DOM
+  root.appendChild(
+    // Clone the template's document fragment
+    document.importNode(tmpl.content, true)
+  );
+  // */
+</script>
+</body>
+</html>
